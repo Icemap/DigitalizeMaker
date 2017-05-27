@@ -1,5 +1,6 @@
 package com.wqz.dm.service.impl;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -40,7 +41,24 @@ public class TaskServiceImpl implements TaskService
 	
 	private void updateData()
 	{
+		List<Integer> srcIndex = getAllSrcIndex();
+		List<Integer> selfIndex = getAllSelfIndex();
 		
+		for (Iterator<Integer> iter = srcIndex.iterator(); iter.hasNext();) 
+		{
+			Integer srcIndexItem = iter.next();
+			if(selfIndex.contains(srcIndexItem))
+				iter.remove();
+		}
+		
+		if(srcIndex == null || srcIndex.isEmpty())
+			return;
+		
+		List<AllFace> data = getSrcList(srcIndex);
+		for(int i = 0; i < data.size();i++)
+		{
+			insertToSelf(data.get(i));
+		}
 	}
 	
 	@Override
@@ -61,7 +79,7 @@ public class TaskServiceImpl implements TaskService
 	@Transactional(value = "srcTransactionManager", rollbackFor = Exception.class)
 	public List<AllFace> getSrcList(List<Integer> srcIndex)
 	{
-		return allFaceMapper.selectAll();
+		return allFaceMapper.selectByIds(srcIndex);
 	}
 
 	@Override

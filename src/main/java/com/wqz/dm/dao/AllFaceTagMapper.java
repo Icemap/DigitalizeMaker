@@ -2,6 +2,7 @@ package com.wqz.dm.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 
 import com.wqz.dm.pojo.AllFaceTag;
@@ -21,4 +22,12 @@ public interface AllFaceTagMapper {
     int updateByPrimaryKey(AllFaceTag record);
 
     List<Integer> selectAllId();
+    
+    List<AllFaceTag> selectSameTagUnmarked(
+    		@Param(value="start")Integer start,
+    		@Param(value="size")Integer size);
+    
+    List<AllFaceTag> selectAgeTagUnmarked(
+    		@Param(value="start")Integer start,
+    		@Param(value="size")Integer size);
 }

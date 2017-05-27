@@ -22,9 +22,24 @@
     from all_face_tag
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
   <select id="selectAllId" resultType="java.lang.Integer">
     select id
     from all_face_tag
+  </select>
+  
+  <select id="selectSameTagUnmarked" resultMap="BaseResultMap">
+    SELECT *
+	FROM all_face_tag
+	WHERE all_face_tag.sameTag IS NULL 
+	LIMIT #{start},#{size}
+  </select>
+  
+  <select id="selectAgeTagUnmarked" resultMap="BaseResultMap">
+    SELECT *
+	FROM all_face_tag
+	WHERE all_face_tag.ageTag IS NULL 
+	LIMIT #{start},#{size}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from all_face_tag

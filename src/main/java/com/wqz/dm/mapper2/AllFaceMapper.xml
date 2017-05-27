@@ -26,6 +26,20 @@
     select *
     from all_face
   </select>
+  <select id="selectByIds" resultMap="BaseResultMap">
+    select *
+    from all_face
+    where id in 
+    	<foreach 
+			item="id" 
+			index="index" 
+			collection="ids" 
+			open="(" 
+			separator="," 
+			close=")">
+				#{id}
+		</foreach>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from all_face
     where id = #{id,jdbcType=INTEGER}

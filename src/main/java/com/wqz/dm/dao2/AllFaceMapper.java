@@ -2,6 +2,7 @@ package com.wqz.dm.dao2;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 
 import com.wqz.dm.pojo2.AllFace;
@@ -23,4 +24,6 @@ public interface AllFaceMapper {
     List<Integer> selectAllId();
 
     List<AllFace> selectAll();
+    
+    List<AllFace> selectByIds(@Param(value="ids")List<Integer> ids);
 }
