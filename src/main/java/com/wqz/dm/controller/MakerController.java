@@ -37,7 +37,7 @@ public class MakerController
 	
 	@RequestMapping("/markAgeTagAndSexTag")
 	@ResponseBody
-	public Object markAgeTagAndSexTag(Integer id, Integer ageTag, Boolean isMaleTag)
+	public Object markAgeTagAndSexTag(Integer id, String ageTag, Boolean isMaleTag)
 	{
 		return makerServiceImpl.markAgeTagAndSexTag(id, ageTag, isMaleTag);
 	}

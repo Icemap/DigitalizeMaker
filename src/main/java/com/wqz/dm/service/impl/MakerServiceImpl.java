@@ -39,7 +39,7 @@ public class MakerServiceImpl implements MakerService
 	}
 
 	@Override
-	public Boolean markAgeTagAndSexTag(Integer id, Integer ageTag, Boolean isMaleTag)
+	public Boolean markAgeTagAndSexTag(Integer id, String ageTag, Boolean isMaleTag)
 	{
 		AllFaceTag allFaceTag = new AllFaceTag();
 		allFaceTag.setId(id);

@@ -21,10 +21,11 @@ public class AllFaceTag {
 
     private Byte humantag;
 
-    private Integer agetag;
+    private String agetag;
 
     private Byte ismaletag;
 
+    
     public AllFaceTag()
     {
     	
@@ -104,12 +105,12 @@ public class AllFaceTag {
         this.humantag = humantag;
     }
 
-    public Integer getAgetag() {
+    public String getAgetag() {
         return agetag;
     }
 
-    public void setAgetag(Integer agetag) {
-        this.agetag = agetag;
+    public void setAgetag(String agetag) {
+        this.agetag = agetag == null ? null : agetag.trim();
     }
 
     public Byte getIsmaletag() {
